@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+//utils to be used
+import React, { Component } from "react";
+import Navbar from "./component/layout/Navbar";
+import User from "./component/user/User";
+import axios from "axios";
+//global css
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//class based react component extendsing Component for core react component
+class App extends Component {
+  state = {
+    users: [],
+    loading: false
+  };
+
+  async componentDidMount() {
+    this.setState({ loading: true });
+    const res = await axios.get("https://api.github.com/users");
+    this.setState({ users: res.data, loading: false });
+  }
+
+  //class method to return the view
+  render() {
+    // const name = "udaky";
+
+    //arrow function
+    // const foo = () => 'Bars'
+
+    //equivallent js code for the respective jsx to create a div with h1 containing a text
+    // return React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'hello from react js'));
+
+    return (
+      <div className="App">
+        <Navbar />
+        <div className="container">
+          <User loading={this.state.loading} users={this.state.users} />
+        </div>
+      </div>
+    );
+  }
 }
-
+//exporting the App component finally
 export default App;
