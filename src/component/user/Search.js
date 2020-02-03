@@ -32,7 +32,7 @@ class Search extends React.Component {
   onSubmit = e => {
     e.preventDefault();
     if (this.state.text === "") {
-      this.props.setAlert("message", "type");
+      this.props.setAlert("Please provide details", "light");
     }
     // console.log(this.state.text);
     this.props.searchUsers(this.state.text);
@@ -41,33 +41,38 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div>
-        <form className="form" onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            name="text"
-            placeholder="Search for user"
-            value={this.state.text}
-            onChange={this.onChange}
-          ></input>
-          <button
-            type="Submit"
-            value="Search"
-            className="btn bg-primary-blue btn-block"
-          >
-            Submit
-          </button>
+      <div className="container">
+        <form className="form m-5 p-5" onSubmit={this.onSubmit}>
+          <div className="input-group">
+            <input
+              className="form-control mb-2"
+              type="text"
+              name="text"
+              placeholder="Search for user"
+              value={this.state.text}
+              onChange={this.onChange}
+            ></input>
+            <div className="input-group-append">
+              <button
+                className="form-control btn btn-primary"
+                type="Submit"
+                value="Search"
+              >
+                Submit
+              </button>
+              {this.props.showClear && (
+                <button
+                  type="Submit"
+                  value="clear"
+                  className="form-control btn btn-danger  btn-block"
+                  onClick={this.props.clearUsers}
+                >
+                  clear page
+                </button>
+              )}
+            </div>
+          </div>
         </form>
-        {this.props.showClear && (
-          <button
-            type="Submit"
-            value="Search"
-            className="btn btn-light btn-block"
-            onClick={this.props.clearUsers}
-          >
-            clear page
-          </button>
-        )}
       </div>
     );
   }
