@@ -41,38 +41,42 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <form className="form m-5 p-5" onSubmit={this.onSubmit}>
-          <div className="input-group">
-            <input
-              className="form-control mb-2"
-              type="text"
-              name="text"
-              placeholder="Search for user"
-              value={this.state.text}
-              onChange={this.onChange}
-            ></input>
-            <div className="input-group-append">
-              <button
-                className="form-control btn btn-primary"
-                type="Submit"
-                value="Search"
-              >
-                Submit
-              </button>
-              {this.props.showClear && (
-                <button
-                  type="Submit"
-                  value="clear"
-                  className="form-control btn btn-danger  btn-block"
-                  onClick={this.props.clearUsers}
-                >
-                  clear page
-                </button>
-              )}
-            </div>
+      <div className="container mt-5 pt-5">
+        <div className="row">
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <form className="form" onSubmit={this.onSubmit}>
+              <div>
+                <input
+                  className="form-control mb-2"
+                  type="text"
+                  name="text"
+                  placeholder="Search for user"
+                  value={this.state.text}
+                  onChange={this.onChange}
+                ></input>
+                <div>
+                  <button
+                    className="form-control btn btn-outline-primary"
+                    type="Submit"
+                    value="Search"
+                  >
+                    Submit
+                  </button>
+                  {this.props.showClear && (
+                    <button
+                      type="Submit"
+                      value="clear"
+                      className="form-control btn btn-outline-danger  btn-block mt-2"
+                      onClick={this.props.clearUsers}
+                    >
+                      clear page
+                    </button>
+                  )}
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     );
   }

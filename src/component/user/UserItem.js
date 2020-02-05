@@ -14,13 +14,15 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
   //   const { login, avatar_url, html_url } = props.user;
   return (
     <React.Fragment>
-      <div className="col-lg-4 mb-2">
-        <div className="card">
-          <img src={avatar_url} className="card-img-top" alt={login} />
-          <div className="card-body">
-            <h5 className="card-title">{login}</h5>
-            <Link to={`user/${login}`} className="btn btn-primary">
-              Visit
+      <div className="col-lg-4 mb-2 mt-2">
+        <div className="card shadow-lg">
+          <img src={avatar_url} className="card-img-top " alt={login} />
+          <div
+            className="card-body"
+            style={{ background: "rgba(10,10,20,10,0.2)" }}
+          >
+            <Link to={`user/${login}`} className="card-title">
+              <h5 className="text-center">{login}</h5>
             </Link>
           </div>
         </div>

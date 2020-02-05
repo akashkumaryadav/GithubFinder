@@ -7,7 +7,7 @@ const Users = ({ loading, users }) => {
   if (loading) {
     return (
       <div className="container" style={{ marginTop: "20 %" }}>
-        <Spinner />;
+        <Spinner />
       </div>
     );
   } else {
